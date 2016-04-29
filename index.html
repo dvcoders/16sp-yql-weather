@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yahoo! Weather</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1><input id="search" placeholder="Concord, CA"><div class="pull-right"><small id="time">-</small></div></h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-3 text-center">
+            <img id="currentImg" src="" alt="">
+            <div id="currentCondition" class="condition text-center">-</div>
+          </div>
+          <div class="col-sm-6 text-center">
+            <span id="currentTemp">-</span><span id="currentUnitTemp"></span>
+          </div>
+          <div class="col-sm-3 text-center">
+            <div id="windArrow"></div>
+            <span id="windSpeed">-</span><span id="windUnit"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 text-center">
+        <h2 id="location"></h2>
+        <dl class="dl-horizontal text-left">
+          <dt>Humidity</dt><dd id="humidity">-</dd>
+          <dt>Pressure</dt><dd id="pressure">-</dd>
+          <dt>Sunrise</dt><dd id="sunrise">-</dd>
+          <dt>Sunset</dt><dd id="sunset">-</dd>
+        </dl>
+      </div>
+    </div>
+    <div id="weather10day" class="row">
+    </div>
+  </div>
+
+  <template id="weatherTile">
+    <div class="col-md-2 day">
+      <h3 class="time">{0}</h3>
+      <span class="high">{2}{4}</span><span class="low">{3}{4}</span>
+      <img src="https://icons.wxug.com/i/c/v4/{5}.svg" alt="{1}">
+      <div class="condition">{1}</div>
+    </div>
+  </template>
+  <!--<h1>Yahoo! Weather<small id="title"></small></h1>
+  <h2 id="current"></h2>
+  <input id="location" value="concord, ca">
+  <div id="weather10day">
+  </div>
+  <script>
+    var queryData = {
+      "count": 1,
+      "created": "2016-04-28T09:11:56Z",
+      "lang": "en-US",
+      "results": {
+        "channel": {
+          "units": {
+            "distance": "mi",
+            "pressure": "in",
+            "speed": "mph",
+            "temperature": "F"
+          },
+          "title": "Yahoo! Weather - Concord, CA, US",
+          "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2384020/",
+          "description": "Yahoo! Weather for Concord, CA, US",
+          "language": "en-us",
+          "lastBuildDate": "Thu, 28 Apr 2016 02:11 AM PDT",
+          "ttl": "60",
+          "location": {
+            "city": "Concord",
+            "country": "United States",
+            "region": " CA"
+          },
+          "wind": {
+            "chill": "50",
+            "direction": "270",
+            "speed": "14"
+          },
+          "atmosphere": {
+            "humidity": "68",
+            "pressure": "996.0",
+            "rising": "0",
+            "visibility": "16.1"
+          },
+          "astronomy": {
+            "sunrise": "6:15 am",
+            "sunset": "7:57 pm"
+          },
+          "image": {
+            "title": "Yahoo! Weather",
+            "width": "142",
+            "height": "18",
+            "link": "http://weather.yahoo.com",
+            "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+          },
+          "item": {
+            "title": "Conditions for Concord, CA, US at 01:00 AM PDT",
+            "lat": "37.972221",
+            "long": "-122.001472",
+            "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2384020/",
+            "pubDate": "Thu, 28 Apr 2016 01:00 AM PDT",
+            "condition": {
+              "code": "31",
+              "date": "Thu, 28 Apr 2016 01:00 AM PDT",
+              "temp": "53",
+              "text": "Clear"
+            },
+            "forecast": [{
+              "code": "32",
+              "date": "28 Apr 2016",
+              "day": "Thu",
+              "high": "75",
+              "low": "49",
+              "text": "Sunny"
+            }, {
+              "code": "30",
+              "date": "29 Apr 2016",
+              "day": "Fri",
+              "high": "73",
+              "low": "51",
+              "text": "Partly Cloudy"
+            }, {
+              "code": "32",
+              "date": "30 Apr 2016",
+              "day": "Sat",
+              "high": "80",
+              "low": "53",
+              "text": "Sunny"
+            }, {
+              "code": "32",
+              "date": "01 May 2016",
+              "day": "Sun",
+              "high": "84",
+              "low": "59",
+              "text": "Sunny"
+            }, {
+              "code": "30",
+              "date": "02 May 2016",
+              "day": "Mon",
+              "high": "78",
+              "low": "55",
+              "text": "Partly Cloudy"
+            }, {
+              "code": "28",
+              "date": "03 May 2016",
+              "day": "Tue",
+              "high": "74",
+              "low": "53",
+              "text": "Mostly Cloudy"
+            }, {
+              "code": "28",
+              "date": "04 May 2016",
+              "day": "Wed",
+              "high": "71",
+              "low": "55",
+              "text": "Mostly Cloudy"
+            }, {
+              "code": "30",
+              "date": "05 May 2016",
+              "day": "Thu",
+              "high": "71",
+              "low": "54",
+              "text": "Partly Cloudy"
+            }, {
+              "code": "30",
+              "date": "06 May 2016",
+              "day": "Fri",
+              "high": "71",
+              "low": "53",
+              "text": "Partly Cloudy"
+            }, {
+              "code": "30",
+              "date": "07 May 2016",
+              "day": "Sat",
+              "high": "76",
+              "low": "54",
+              "text": "Partly Cloudy"
+            }],
+            "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/31.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Clear\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Thu - Sunny. High: 75Low: 49\n<BR /> Fri - Partly Cloudy. High: 73Low: 51\n<BR /> Sat - Sunny. High: 80Low: 53\n<BR /> Sun - Sunny. High: 84Low: 59\n<BR /> Mon - Partly Cloudy. High: 78Low: 55\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2384020/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>",
+            "guid": {
+              "isPermaLink": "false"
+            }
+          }
+        }
+      }
+    };
+  </script>
+-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+  <script src="/main.js"></script>
+</body>
+
+</html>

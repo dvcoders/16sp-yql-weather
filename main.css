@@ -1,0 +1,60 @@
+.container {
+  margin-bottom: 50px;
+}
+
+#currentTemp {
+  font-size: 7em;
+}
+
+#windArrow {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 60px solid #333;
+  margin: auto;
+  margin-top: 33%;
+}
+
+#currentImg {
+  max-width: 300px;
+}
+
+.day {
+  text-align: center;
+}
+
+.high, .low {
+  padding: 0 7px;
+}
+
+.high {
+  box-shadow: 4px 0px 0px -3px gray;
+}
+
+.high {
+  color: red;
+}
+
+.low {
+  color: blue;
+}
+
+.day img {
+  width: 80px;
+  height: 80px;
+}
+
+#search {
+  background: #FDFDFD;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 2px;
+  padding: 5px;
+  outline: none;
+  transition: .25s;
+}
+
+#search:focus {
+  border: 1px solid #4D90FE;
+  box-shadow: inner 0 0 2px 2px black;
+}
