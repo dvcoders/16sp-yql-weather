@@ -30,24 +30,24 @@ function run(location) {
 }
 
 function updateCurrent (location, wind, condition, atmosphere, astronomy, units) {
-  var loc = location.city + ', ' + location.region
-  document.getElementById('location').textContent = loc;
+  document.getElementById('location').textContent = location.city;
+  document.getElementById('location2').textContent = location.region + ', ' + location.country;
 
   document.getElementById('time').textContent = moment(condition.data).format('LLL')
 
   var currentImg = document.getElementById('currentImg')
-  currentImg.alt = condition.text
-  currentImg.src = format('//icons.wxug.com/i/c/v4/{0}.svg', condition.text.toLowerCase().replace(/ |hunder/gi, ''))
+  currentImg.classList.remove(currentImg.classList.item(1))
+  currentImg.classList.add('code' + condition.code)
+  currentImg.title = condition.text
 
   document.getElementById('currentCondition').textContent = condition.text
   document.getElementById('currentTemp').textContent = condition.temp
-  document.getElementById('currentUnitTemp').textContent = units.temperature
+  document.getElementById('currentUnitTemp').textContent = '°' + units.temperature
   document.getElementById('windArrow').style.transform = 'rotate(' + wind.direction + 'deg)'
-  document.getElementById('windSpeed').textContent = wind.speed
-  document.getElementById('windUnit').textContent = units.speed
+  document.getElementById('windSpeed').textContent = wind.speed + ' ' + units.speed
 
-  document.getElementById('humidity').textContent = atmosphere.humidity
-  document.getElementById('pressure').textContent = atmosphere.pressure
+  document.getElementById('humidity').textContent = atmosphere.humidity + '%'
+  document.getElementById('pressure').textContent = atmosphere.pressure + ' ' + units.pressure
   document.getElementById('sunrise').textContent = astronomy.sunrise
   document.getElementById('sunset').textContent = astronomy.sunset
 }
@@ -58,8 +58,9 @@ function genTiles (forecast, unitTemperature) {
 
   for (var i = 0; i < forecast.length; i++) {
     day = forecast[i]
+    var mom = moment(day.date)
 
-    html += format(template, day.day, day.text, day.high, day.low, unitTemperature, day.text.toLowerCase().replace(/ |hunder/gi, ''))
+    html += format(template, mom.format('dddd'), day.text, day.high, day.low, unitTemperature, day.code, mom.format('D MMM'))
   }
   return html
 }

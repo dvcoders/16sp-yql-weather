@@ -6,22 +6,21 @@
   font-size: 7em;
 }
 
-#windArrow {
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 60px solid #333;
-  margin: auto;
-  margin-top: 33%;
-}
-
 #currentImg {
   max-width: 300px;
 }
 
+.valign {
+  display: flex;
+  align-items: center;
+}
+
 .day {
   text-align: center;
+}
+
+h3.time {
+  line-height: 0.75em;
 }
 
 .high, .low {
@@ -29,7 +28,7 @@
 }
 
 .high {
-  box-shadow: 4px 0px 0px -3px gray;
+  box-shadow: 3px 0px 0px -2px #CCC;
 }
 
 .high {
@@ -40,9 +39,135 @@
   color: blue;
 }
 
-.day img {
-  width: 80px;
-  height: 80px;
+.wimg {
+  background-image: url(cosmos_weather.png);
+  background-size: 3000px 114px;
+  width: 82px;
+  height: 82px;
+  margin: auto;
+}
+
+.wimg.wind {
+  background-position: -2742px -42px;
+  width: 40px;
+  height: 40px;
+}
+
+.wimg.code0 {
+  background-position: 0 0
+}
+
+.wimg.code1, .wimg.code2 {
+  background-position: -82px 0
+}
+
+.wimg.code3, .wimg.code37, .wimg.code45, .wimg.code47 {
+  background-position: -164px 0
+}
+
+.wimg.code4 {
+  background-position: -246px 0
+}
+
+.wimg.code5 {
+  background-position: -328px 0
+}
+
+.wimg.code6, .wimg.code10 {
+  background-position: -410px 0
+}
+
+.wimg.code7 {
+  background-position: -492px 0
+}
+
+.wimg.code8, .wimg.code18 {
+  background-position: -574px 0
+}
+
+.wimg.code9 {
+  background-position: -656px 0
+}
+
+.wimg.code11, .wimg.code12 {
+  background-position: -738px 0
+}
+
+.wimg.code13, .wimg.code14 {
+  background-position: -820px 0
+}
+
+.wimg.code15, .wimg.code16, .wimg.code41, .wimg.code42, .wimg.code43, .wimg.code46 {
+  background-position: -902px 0
+}
+
+.wimg.code17, .wimg.code35 {
+  background-position: -984px 0
+}
+
+.wimg.code23, .wimg.code24 {
+  background-position: -1066px 0
+}
+
+.wimg.code20, .wimg.code21, .wimg.code22 {
+  background-position: -1148px 0
+}
+
+.wimg.code25, .wimg.code32, .wimg.code36 {
+  background-position: -1230px 0
+}
+
+.wimg.code26, .wimg.code44 {
+  background-position: -1312px 0
+}
+
+.wimg.code27, .wimg.code28 {
+  background-position: -1394px 0
+}
+
+.wimg.code29 {
+  background-position: -1476px 0
+}
+
+.wimg.code30 {
+  background-position: -1558px 0
+}
+
+.wimg.code31 {
+  background-position: -1640px 0
+}
+
+.wimg.code33 {
+  background-position: -1722px 0
+}
+
+.wimg.code34 {
+  background-position: -1804px 0
+}
+
+.wimg.code38 {
+  background-position: -1886px 0
+}
+
+.wimg.code39 {
+  background-position: -1968px 0
+}
+
+.wimg.code40 {
+  background-position: -2050px 0
+}
+
+.wimg.code19 {
+  background-position: -2132px 0
+}
+
+#current td:first-child {
+  font-weight: bold;
+  text-align: right;
+}
+
+#current td:last-child {
+  text-align: left;
 }
 
 #search {
@@ -52,9 +177,14 @@
   padding: 5px;
   outline: none;
   transition: .25s;
+  max-width: 100%;
 }
 
 #search:focus {
   border: 1px solid #4D90FE;
   box-shadow: inner 0 0 2px 2px black;
+}
+
+#humidity, #pressure, #sunrise, #sunset {
+  white-space: nowrap;
 }
